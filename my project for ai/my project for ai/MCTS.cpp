@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include <iostream>
 #include "GameBoard.h"
@@ -7,21 +7,16 @@ using namespace std;
 
 const int MAX_RUNS = 5000;
 
-bool validatePosition(int x, int y, GameState gameState)
+bool validatePosition(int x, GameState gameState)
 {
-    if (x < 0 || x >5)
+    if (x < 0 || x >6)
     {
         cout << "Invlid X: Enter 0-5" << endl;
         return false;
     }
 
-    if (y < 0 || y >6)
-    {
-        cout << "Invlid Y: Enter 0-6" << endl;
-        return false;
-    }
 
-    if (gameState.gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE)
+    if (gameState.gameBoard.board[x][0] != BOARD_SQUARE_STATE::NONE)
     {
         cout << "Invlid Move: Select Empty Position" << endl;
         return false;
@@ -32,11 +27,10 @@ bool validatePosition(int x, int y, GameState gameState)
 
 
 
-
 int main()
 {
 
-    cout << "*** Tic Tac Toe ***" << endl;
+    cout << "*** Connect 4 ***" << endl;
 
     // define the markers used by the AI and the player
     BOARD_SQUARE_STATE aiMarker = BOARD_SQUARE_STATE::CROSS;
@@ -133,14 +127,13 @@ int main()
             cout << "Enter your x position: ";
             cin >> x;
 
-            cout << "Enter your y position: ";
-            cin >> y;
-
             // validate the numerical input 
-            validMove = validatePosition(x, y, mainGameState);
+            validMove = validatePosition(x, mainGameState);
 
 
         } while (!validMove);
+
+        y = mainGameState.getLowestOfRow(x);
 
         //apply the player's move to the board
         playerAction.x = x;

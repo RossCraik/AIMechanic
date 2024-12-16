@@ -15,6 +15,7 @@ public:
 	void setAndApplyAction(GameAction newAction);
 	std::vector<std::pair<int, int>> getPossibleMoves();
 	void printBoard();
+	int getLowestOfRow(int x);
 	BOARD_SQUARE_STATE checkWin();
 
 };

@@ -5,7 +5,7 @@ enum BOARD_SQUARE_STATE { NONE, CIRCLE, CROSS };
 
 struct GameBoard
 {
-	BOARD_SQUARE_STATE board[6][7]{ { BOARD_SQUARE_STATE::NONE } };
+	BOARD_SQUARE_STATE board[7][6]{ { BOARD_SQUARE_STATE::NONE } };
 };
 
 struct GameAction

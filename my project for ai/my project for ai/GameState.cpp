@@ -27,14 +27,14 @@ std::vector<std::pair<int, int>> GameState::getPossibleMoves()
 {
 	std::vector<std::pair<int, int>> possibleMoves;
 
-	for (int j = 0; j < 3; j++)
+	for (int y = 0; y < 6; y++)
 	{
-		for (int i = 0; i < 3; i++)
+		for (int x = 0; x < 7; x++)
 		{
-			if (gameBoard.board[i][j] == BOARD_SQUARE_STATE::NONE)
+			if (gameBoard.board[x][y] == BOARD_SQUARE_STATE::NONE)
 			{
 				// if currently empty,add to possible moves
-				possibleMoves.push_back(std::make_pair(i, j));
+				possibleMoves.push_back(std::make_pair(x, y));
 			}
 		}
 	}
@@ -68,15 +68,26 @@ char getCharForState(BOARD_SQUARE_STATE printState)
 * printBoard will output the current game state to the command line
 */
 void GameState::printBoard() {
-	for (int j = 0; j < 6; j++)
+	for (int y = 0; y < 6; y++)
 	{
-		for (int i = 0; i < 7; i++)
+		for (int x = 0; x < 7; x++)
 		{
-			std::cout << " " << getCharForState(gameBoard.board[j][i]);
+			std::cout << " " << getCharForState(gameBoard.board[x][y]);
 		}
 		std::cout << std::endl;
 	}
 
+}
+
+
+int GameState::getLowestOfRow(int x)
+{
+	int y = 6;
+	do {
+		y--;
+	} while (gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE);
+	
+	return y;
 }
 
 
@@ -90,70 +101,70 @@ BOARD_SQUARE_STATE GameState::checkWin()
 
 
 	//checking row
-	for (int i = 0; i < 6; i++)
+	for (int y = 0; y < 6; y++)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int x = 0; x < 4; x++)
 		{
 			if (
-				gameBoard.board[i][j] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[i][j] == gameBoard.board[i][j + 1] &&
-				gameBoard.board[i][j] == gameBoard.board[i][j + 2] &&
-				gameBoard.board[i][j] == gameBoard.board[i][j + 3]
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
+				gameBoard.board[x][y] == gameBoard.board[x + 1][y] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 2][y] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 3][y]
 				)
 			{
-				return gameBoard.board[i][j];
+				return gameBoard.board[x][y];
 			}
 		}
 	}
 
 	//checking column
-	for (int i = 0; i < 3; i++)
+	for (int y = 0; y < 3; y++)
 	{
-		for (int j = 0; j < 7; j++)
+		for (int x = 0; x < 7; x++)
 		{
 			if (
-				gameBoard.board[i][j] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[i][j] == gameBoard.board[i + 1][j] &&
-				gameBoard.board[i][j] == gameBoard.board[i + 2][j] &&
-				gameBoard.board[i][j] == gameBoard.board[i + 3][j]
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
+				gameBoard.board[x][y] == gameBoard.board[x][y + 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x][y + 2] &&
+				gameBoard.board[x][y] == gameBoard.board[x][y + 3]
 				)
 			{
-				return gameBoard.board[i][j];
+				return gameBoard.board[x][y];
 			}
 		}
 	}
 
 
 	// Check first diagonal
-	for (int i = 0; i < 3; i++)
+	for (int y = 0; y < 3; y++)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int x = 0; x < 4; x++)
 		{
 			if (
-				gameBoard.board[i][j] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[i][j] == gameBoard.board[i + 1][j + 1] &&
-				gameBoard.board[i][j] == gameBoard.board[i + 2][j + 2] &&
-				gameBoard.board[i][j] == gameBoard.board[i + 3][j + 3]
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
+				gameBoard.board[x][y] == gameBoard.board[x + 1][y + 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 2][y + 2] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 3][y + 3]
 				)
 			{
-				return gameBoard.board[i][j];
+				return gameBoard.board[x][y];
 			}
 		}
 	}
 
 	// Check second diagonal
-	for (int i = 3; i < 6; i++)
+	for (int y = 3; y < 6; y++)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int x = 0; x < 4; x++)
 		{
 			if (
-				gameBoard.board[i][j] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[i][j] == gameBoard.board[i - 1][j + 1] &&
-				gameBoard.board[i][j] == gameBoard.board[i - 2][j + 2] &&
-				gameBoard.board[i][j] == gameBoard.board[i - 3][j + 3]
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
+				gameBoard.board[x][y] == gameBoard.board[x - 1][y + 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x - 2][y + 2] &&
+				gameBoard.board[x][y] == gameBoard.board[x - 3][y + 3]
 				)
 			{
-				return gameBoard.board[i][j];
+				return gameBoard.board[x][y];
 			}
 		}
 	}

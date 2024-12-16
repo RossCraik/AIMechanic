@@ -104,16 +104,16 @@ TicTacToeNode* TicTacToeNode::Select()
 		return this;
 	else
 	{
-		/*int randomNum = rand() % 10;
+		int randomNum = rand() % 10;
 		if (randomNum < 2) {
 			int randomBranch = rand() % branches.size();
 			return branches[randomBranch]->Select();
 
 		}
-		else {*/
+		else {
 			TicTacToeNode* highest = FindHighestRankingChild(false);
 			return highest->Select();
-		//}
+		}
 
 
 

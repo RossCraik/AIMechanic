@@ -21,7 +21,7 @@
     <ClInclude Include="GameBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TicTacToeNode.h">
+    <ClInclude Include="Connect4Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TicTacToeNode.cpp">
+    <ClCompile Include="Connect4Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MCTS.cpp">

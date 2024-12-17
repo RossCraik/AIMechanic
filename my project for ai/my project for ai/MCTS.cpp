@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "GameBoard.h"
-#include "TicTacToeNode.h"
+#include "Connect4Node.h"
 using namespace std;
 
 const int MAX_RUNS = 5000;
@@ -38,7 +38,7 @@ int main()
 
     // creeate the initial board and root node for the tree
     GameState mainGameState;
-    TicTacToeNode* rootNode = new TicTacToeNode();
+    Connect4Node* rootNode = new Connect4Node();
 
 
 
@@ -59,10 +59,10 @@ int main()
         do {
 
             // Select - choose a node that will be expanded
-            TicTacToeNode* selectedNode = rootNode->Select();
+            Connect4Node* selectedNode = rootNode->Select();
 
             // Expand - expand the tree from this node
-            TicTacToeNode* expandedNode = selectedNode->Expand();
+            Connect4Node* expandedNode = selectedNode->Expand();
 
             // expandedNode will be NULL if it's a leaf node and simulation is not possible
             if (!expandedNode == NULL)
@@ -79,9 +79,18 @@ int main()
 
 
         // perform the action - find child node with highest ranking
-        TicTacToeNode* highestChild = rootNode->FindHighestRankingChild(true);
+        Connect4Node* highestChild = rootNode->FindHighestRankingChild(true);
         GameAction bestAction = highestChild->getGameState().gameAction;
-        bestAction.playerMove = aiMarker;
+
+        //if (mainGameState.checkForPlayerWin() == BOARD_SQUARE_STATE::NONE) {
+            bestAction.playerMove = aiMarker;
+        //}
+        //else
+        //{
+         //   bestAction.playerMove = mainGameState.checkForPlayerWin();
+        //}
+        
+        
         std::cout << "The AI selected move is " << bestAction.x << " " << bestAction.y << std::endl;
 
         // update the main main state with the AI's move

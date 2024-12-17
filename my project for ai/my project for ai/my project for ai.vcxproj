@@ -129,12 +129,12 @@
   <ItemGroup>
     <ClInclude Include="GameBoard.h" />
     <ClInclude Include="GameState.h" />
-    <ClInclude Include="TicTacToeNode.h" />
+    <ClInclude Include="Connect4Node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="MCTS.cpp" />
-    <ClCompile Include="TicTacToeNode.cpp" />
+    <ClCompile Include="Connect4Node.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

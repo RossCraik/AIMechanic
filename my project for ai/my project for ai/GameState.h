@@ -18,5 +18,7 @@ public:
 	int getLowestOfRow(int x);
 	BOARD_SQUARE_STATE checkWin();
 
+	BOARD_SQUARE_STATE checkForPlayerWin();
+
 };
 

@@ -26,18 +26,19 @@ void GameState::setAndApplyAction(GameAction newAction)
 std::vector<std::pair<int, int>> GameState::getPossibleMoves()
 {
 	std::vector<std::pair<int, int>> possibleMoves;
-
-	for (int y = 0; y < 6; y++)
+	int y;
+	
+	for (int x = 0; x < 7; x++)
 	{
-		for (int x = 0; x < 7; x++)
+		y = getLowestOfRow(x);
+
+		if (gameBoard.board[x][y] == BOARD_SQUARE_STATE::NONE)
 		{
-			if (gameBoard.board[x][y] == BOARD_SQUARE_STATE::NONE)
-			{
-				// if currently empty,add to possible moves
-				possibleMoves.push_back(std::make_pair(x, y));
-			}
+			// if currently empty,add to possible moves
+			possibleMoves.push_back(std::make_pair(x, y));
 		}
 	}
+	
 
 	return possibleMoves;
 }
@@ -82,10 +83,15 @@ void GameState::printBoard() {
 
 int GameState::getLowestOfRow(int x)
 {
-	int y = 6;
-	do {
-		y--;
-	} while (gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE);
+	int y = 5;
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE)
+		{
+			y--;
+		}
+	}
 	
 	return y;
 }
@@ -159,9 +165,9 @@ BOARD_SQUARE_STATE GameState::checkWin()
 		{
 			if (
 				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[x][y] == gameBoard.board[x - 1][y + 1] &&
-				gameBoard.board[x][y] == gameBoard.board[x - 2][y + 2] &&
-				gameBoard.board[x][y] == gameBoard.board[x - 3][y + 3]
+				gameBoard.board[x][y] == gameBoard.board[x + 1][y - 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 2][y - 2] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 3][y - 3]
 				)
 			{
 				return gameBoard.board[x][y];
@@ -176,5 +182,96 @@ BOARD_SQUARE_STATE GameState::checkWin()
 
 
 	// If no-one wins return the default state
+	return BOARD_SQUARE_STATE::NONE;
+}
+
+
+BOARD_SQUARE_STATE GameState::checkForPlayerWin()
+{
+	//checking row
+	for (int y = 0; y < 6; y++)
+	{
+		for (int x = 0; x < 5; x++)
+		{
+			if (
+				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] == gameBoard.board[x + 1][y] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 2][y]
+
+				)
+			{
+				if (x > 0 && (gameBoard.board[x - 1][y] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x - 1][y];
+				}
+				if (x < 4 && (gameBoard.board[x + 3][y] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x + 3][y];
+				}
+			}
+		}
+	}
+
+	//checking column
+	for (int y = 0; y < 4; y++)
+	{
+		for (int x = 0; x < 7; x++)
+		{
+			if (
+				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] == gameBoard.board[x][y + 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x][y + 2] 
+				)
+			{
+				if (y > 0 && (gameBoard.board[x][y - 1] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x][y - 1];
+				}
+				if (y < 3 && (gameBoard.board[x][y + 3] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x][y + 3];
+				}
+			}
+		}
+	}
+
+
+	// Check first diagonal
+	for (int y = 0; y < 4; y++)
+	{
+		for (int x = 0; x < 5; x++)
+		{
+			if (
+				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] == gameBoard.board[x + 1][y + 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 2][y + 2] 
+				)
+			{
+				if (x > 0 && y > 0 && (gameBoard.board[x - 1][y - 1] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x - 1][y - 1];
+				}
+				if (x < 4 && y < 3 && (gameBoard.board[x + 3][y + 3] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x + 3][y + 3];
+				}
+			}
+		}
+	}
+
+	// Check second diagonal
+	for (int y = 2; y < 6; y++)
+	{
+		for (int x = 0; x < 5; x++)
+		{
+			if (
+				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] == gameBoard.board[x + 1][y - 1] &&
+				gameBoard.board[x][y] == gameBoard.board[x + 2][y - 2]
+				)
+			{
+				if (x > 0 && y < 5 && (gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x - 1][y + 1];
+				}
+				if (x < 4 && y > 2 && (gameBoard.board[x + 3][y - 3] == BOARD_SQUARE_STATE::NONE)) {
+					return gameBoard.board[x + 3][y - 3];
+				}
+			}
+		}
+	}
 	return BOARD_SQUARE_STATE::NONE;
 }

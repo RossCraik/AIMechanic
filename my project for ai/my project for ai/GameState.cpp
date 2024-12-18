@@ -194,7 +194,7 @@ BOARD_SQUARE_STATE GameState::checkForPlayerWin()
 		for (int x = 0; x < 5; x++)
 		{
 			if (
-				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
 				gameBoard.board[x][y] == gameBoard.board[x + 1][y] &&
 				gameBoard.board[x][y] == gameBoard.board[x + 2][y]
 
@@ -216,7 +216,7 @@ BOARD_SQUARE_STATE GameState::checkForPlayerWin()
 		for (int x = 0; x < 7; x++)
 		{
 			if (
-				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
 				gameBoard.board[x][y] == gameBoard.board[x][y + 1] &&
 				gameBoard.board[x][y] == gameBoard.board[x][y + 2] 
 				)
@@ -238,7 +238,7 @@ BOARD_SQUARE_STATE GameState::checkForPlayerWin()
 		for (int x = 0; x < 5; x++)
 		{
 			if (
-				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
 				gameBoard.board[x][y] == gameBoard.board[x + 1][y + 1] &&
 				gameBoard.board[x][y] == gameBoard.board[x + 2][y + 2] 
 				)
@@ -252,14 +252,14 @@ BOARD_SQUARE_STATE GameState::checkForPlayerWin()
 			}
 		}
 	}
-
+	
 	// Check second diagonal
 	for (int y = 2; y < 6; y++)
 	{
 		for (int x = 0; x < 5; x++)
 		{
 			if (
-				gameBoard.board[x][y] == BOARD_SQUARE_STATE::CIRCLE &&
+				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
 				gameBoard.board[x][y] == gameBoard.board[x + 1][y - 1] &&
 				gameBoard.board[x][y] == gameBoard.board[x + 2][y - 2]
 				)

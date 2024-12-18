@@ -1,4 +1,2 @@
-﻿  Connect4Node.cpp
-A:\CMP304\submissionnn\AIMechanic\my project for ai\my project for ai\Connect4Node.cpp(294,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-A:\CMP304\submissionnn\AIMechanic\my project for ai\my project for ai\Connect4Node.cpp(295,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+﻿  GameState.cpp
   my project for ai.vcxproj -> A:\CMP304\submissionnn\AIMechanic\my project for ai\x64\Debug\my project for ai.exe

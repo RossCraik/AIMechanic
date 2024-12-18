@@ -37,7 +37,6 @@ public:
 	void resetNode();
 	void CalcResult(BOARD_SQUARE_STATE winner);
 	
-	void checkForPlayerWin();
 
 
 private:

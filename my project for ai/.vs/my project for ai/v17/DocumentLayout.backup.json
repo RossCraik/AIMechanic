@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\MCTS.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|solutionrelative:my project for ai\\MCTS.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\Connect4Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|solutionrelative:my project for ai\\Connect4Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\Connect4Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|solutionrelative:my project for ai\\Connect4Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\MCTS.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|solutionrelative:my project for ai\\MCTS.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{797C147F-E4A7-44AC-8696-E9D13CFE5A78}|my project for ai\\my project for ai.vcxproj|A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\GameState.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,43 +34,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MCTS.cpp",
               "DocumentMoniker": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\MCTS.cpp",
               "RelativeDocumentMoniker": "my project for ai\\MCTS.cpp",
               "ToolTip": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\MCTS.cpp",
               "RelativeToolTip": "my project for ai\\MCTS.cpp",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFUAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAALAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T16:19:50.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Connect4Node.cpp",
               "DocumentMoniker": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\Connect4Node.cpp",
               "RelativeDocumentMoniker": "my project for ai\\Connect4Node.cpp",
               "ToolTip": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\Connect4Node.cpp",
               "RelativeToolTip": "my project for ai\\Connect4Node.cpp",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAAACYBAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T16:19:11.054Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Connect4Node.h",
               "DocumentMoniker": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\Connect4Node.h",
               "RelativeDocumentMoniker": "my project for ai\\Connect4Node.h",
               "ToolTip": "A:\\CMP304\\submissionnn\\AIMechanic\\my project for ai\\my project for ai\\Connect4Node.h",
               "RelativeToolTip": "my project for ai\\Connect4Node.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACcAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-16T16:18:42.952Z",
               "EditorCaption": ""
@@ -85,8 +85,7 @@
               "RelativeToolTip": "my project for ai\\GameState.cpp",
               "ViewState": "AgIAALYAAAAAAAAAAAAAwLwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-16T16:02:47.371Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T16:02:47.371Z"
             },
             {
               "$type": "Document",
@@ -98,8 +97,7 @@
               "RelativeToolTip": "my project for ai\\GameState.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAjwBQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T15:57:54.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T15:57:54.612Z"
             },
             {
               "$type": "Document",
@@ -111,8 +109,7 @@
               "RelativeToolTip": "my project for ai\\GameBoard.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T16:01:24.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T16:01:24.934Z"
             }
           ]
         }

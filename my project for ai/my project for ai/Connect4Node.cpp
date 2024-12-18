@@ -107,6 +107,8 @@ Connect4Node* Connect4Node::Select()
 	}
 	else
 	{
+		
+
 		int randomNum = rand() % 10;
 		if (randomNum < 2) {
 			int randomBranch = rand() % branches.size();
@@ -290,11 +292,12 @@ Connect4Node* Connect4Node::FindHighestRankingChild(bool report)
 	for (int i = 0; i < branches.size(); i++)
 	{
 		float nodeWinRate = branches[i]->getRanking() / branches[i]->visits;
+		float newUCB = nodeWinRate + (1.5 * sqrt(log(visits) / branches[i]->visits));
 
-		if (nodeWinRate > maxRanking)
+		if (newUCB > maxRanking)
 		{
 			maxIndex = i;
-			maxRanking = branches[i]->getRanking();
+			maxRanking = newUCB;
 		}
 	}
 

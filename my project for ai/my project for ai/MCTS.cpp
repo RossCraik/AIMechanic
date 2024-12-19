@@ -82,13 +82,13 @@ int main()
         Connect4Node* highestChild = rootNode->FindHighestRankingChild(true);
         GameAction bestAction = highestChild->getGameState().gameAction;
 
-        if (mainGameState.checkForPlayerWin() == BOARD_SQUARE_STATE::NONE) {
+        //if (mainGameState.checkForPlayerWin() == BOARD_SQUARE_STATE::NONE) {
             bestAction.playerMove = aiMarker;
-        }
-        else
-        {
-            bestAction.playerMove = mainGameState.checkForPlayerWin();
-        }
+        //}
+        //else
+        //{
+        //    bestAction.playerMove = mainGameState.checkForPlayerWin();
+        //}
         
         
         std::cout << "The AI selected move is " << bestAction.x << " " << bestAction.y << std::endl;

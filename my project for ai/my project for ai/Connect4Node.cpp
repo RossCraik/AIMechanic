@@ -209,6 +209,13 @@ void Connect4Node::Simulate(BOARD_SQUARE_STATE startingTurn)
 		{
 			// pick a random move and apply it to the simulation state
 			int randomMove = rand() % possibleMoves.size();
+
+			if (copyOfGameState.checkForPlayerWin(possibleMoves[randomMove].first, possibleMoves[randomMove].second))
+			{
+
+			}
+
+
 			GameAction newAction(possibleMoves[randomMove].first, possibleMoves[randomMove].second, playerTurn);
 			copyOfGameState.setAndApplyAction(newAction);
 			possibleMoves.clear();

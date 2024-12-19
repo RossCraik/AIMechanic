@@ -186,92 +186,102 @@ BOARD_SQUARE_STATE GameState::checkWin()
 }
 
 
-BOARD_SQUARE_STATE GameState::checkForPlayerWin()
+bool GameState::checkForPlayerWin(int x, int y)
 {
-	//checking row
-	for (int y = 0; y < 6; y++)
-	{
-		for (int x = 0; x < 5; x++)
-		{
-			if (
-				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[x][y] == gameBoard.board[x + 1][y] &&
-				gameBoard.board[x][y] == gameBoard.board[x + 2][y]
 
-				)
-			{
-				if (x > 0 && (gameBoard.board[x - 1][y] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x - 1][y];
-				}
-				if (x < 4 && (gameBoard.board[x + 3][y] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x + 3][y];
-				}
-			}
-		}
+	
+	//checking row
+	if (
+		x < 4 &&
+		gameBoard.board[x + 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 2][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 3][y] == BOARD_SQUARE_STATE::CIRCLE
+	
+		)
+	{
+		return true;
 	}
+	
+	if (
+		x > 2 &&
+		gameBoard.board[x - 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 2][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 3][y] == BOARD_SQUARE_STATE::CIRCLE
+
+		)
+	{
+		return true;
+	}
+
 
 	//checking column
-	for (int y = 0; y < 4; y++)
+	
+	if (
+		y < 3 &&
+		gameBoard.board[x][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 3] == BOARD_SQUARE_STATE::CIRCLE
+		)
 	{
-		for (int x = 0; x < 7; x++)
-		{
-			if (
-				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[x][y] == gameBoard.board[x][y + 1] &&
-				gameBoard.board[x][y] == gameBoard.board[x][y + 2] 
-				)
-			{
-				if (y > 0 && (gameBoard.board[x][y - 1] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x][y - 1];
-				}
-				if (y < 3 && (gameBoard.board[x][y + 3] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x][y + 3];
-				}
-			}
-		}
+		return true;
 	}
+		
+	if (
+		y > 2 &&
+		gameBoard.board[x][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y - 3] == BOARD_SQUARE_STATE::CIRCLE
+		)
+	{
+		return true;
+	}
+
 
 
 	// Check first diagonal
-	for (int y = 0; y < 4; y++)
-	{
-		for (int x = 0; x < 5; x++)
-		{
-			if (
-				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[x][y] == gameBoard.board[x + 1][y + 1] &&
-				gameBoard.board[x][y] == gameBoard.board[x + 2][y + 2] 
-				)
-			{
-				if (x > 0 && y > 0 && (gameBoard.board[x - 1][y - 1] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x - 1][y - 1];
-				}
-				if (x < 4 && y < 3 && (gameBoard.board[x + 3][y + 3] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x + 3][y + 3];
-				}
-			}
-		}
-	}
 	
-	// Check second diagonal
-	for (int y = 2; y < 6; y++)
+	if (
+		x < 4 && y < 3 && 
+		gameBoard.board[x + 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE
+		)
 	{
-		for (int x = 0; x < 5; x++)
-		{
-			if (
-				gameBoard.board[x][y] != BOARD_SQUARE_STATE::NONE &&
-				gameBoard.board[x][y] == gameBoard.board[x + 1][y - 1] &&
-				gameBoard.board[x][y] == gameBoard.board[x + 2][y - 2]
-				)
-			{
-				if (x > 0 && y < 5 && (gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x - 1][y + 1];
-				}
-				if (x < 4 && y > 2 && (gameBoard.board[x + 3][y - 3] == BOARD_SQUARE_STATE::NONE)) {
-					return gameBoard.board[x + 3][y - 3];
-				}
-			}
-		}
+		return true;
 	}
-	return BOARD_SQUARE_STATE::NONE;
+
+	if (
+		x > 2 && y > 2 &&
+		gameBoard.board[x - 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 2][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 3][y - 3] == BOARD_SQUARE_STATE::CIRCLE
+		)
+	{
+		return true;
+	}
+
+
+	//checking second diagonal
+
+	if (
+		x < 4 && y > 2 &&
+		gameBoard.board[x + 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 2][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 3][y - 3] == BOARD_SQUARE_STATE::CIRCLE
+		)
+	{
+		return true;
+	}
+
+	if (
+		x > 2 && y < 3 &&
+		gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE
+		)
+	{
+		return true;
+	}
+
+	return false;
 }

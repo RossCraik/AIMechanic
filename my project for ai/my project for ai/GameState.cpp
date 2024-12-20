@@ -195,8 +195,9 @@ bool GameState::checkForPlayerWin(int x, int y)
 		x < 4 &&
 		gameBoard.board[x + 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x + 2][y] == BOARD_SQUARE_STATE::CIRCLE &&
-		gameBoard.board[x + 3][y] == BOARD_SQUARE_STATE::CIRCLE
-	
+		gameBoard.board[x + 3][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+		
 		)
 	{
 		return true;
@@ -206,7 +207,8 @@ bool GameState::checkForPlayerWin(int x, int y)
 		x > 2 &&
 		gameBoard.board[x - 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x - 2][y] == BOARD_SQUARE_STATE::CIRCLE &&
-		gameBoard.board[x - 3][y] == BOARD_SQUARE_STATE::CIRCLE
+		gameBoard.board[x - 3][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
 
 		)
 	{
@@ -244,7 +246,8 @@ bool GameState::checkForPlayerWin(int x, int y)
 		x < 4 && y < 3 && 
 		gameBoard.board[x + 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x + 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
-		gameBoard.board[x + 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE
+		gameBoard.board[x + 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
 		)
 	{
 		return true;
@@ -254,7 +257,8 @@ bool GameState::checkForPlayerWin(int x, int y)
 		x > 2 && y > 2 &&
 		gameBoard.board[x - 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x - 2][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
-		gameBoard.board[x - 3][y - 3] == BOARD_SQUARE_STATE::CIRCLE
+		gameBoard.board[x - 3][y - 3] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
 		)
 	{
 		return true;
@@ -267,7 +271,8 @@ bool GameState::checkForPlayerWin(int x, int y)
 		x < 4 && y > 2 &&
 		gameBoard.board[x + 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x + 2][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
-		gameBoard.board[x + 3][y - 3] == BOARD_SQUARE_STATE::CIRCLE
+		gameBoard.board[x + 3][y - 3] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
 		)
 	{
 		return true;
@@ -277,7 +282,8 @@ bool GameState::checkForPlayerWin(int x, int y)
 		x > 2 && y < 3 &&
 		gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x - 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
-		gameBoard.board[x - 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE
+		gameBoard.board[x - 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
 		)
 	{
 		return true;

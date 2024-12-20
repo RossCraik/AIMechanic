@@ -97,14 +97,14 @@ void Connect4Node::generatePossibleMoves()
 */
 Connect4Node* Connect4Node::Select()
 {
-
-
+	
 	// if there are no child nodes, we expand this node
 	if (branches.size() == 0 || availableMoves.size() > 0) {
 
 
 		return this;
 	}
+	
 	else
 	{
 		
@@ -125,13 +125,14 @@ Connect4Node* Connect4Node::Select()
 	}
 }
 
+
 /*
 * Expand  - will perform the Expansion step of the MCTS algorithm
 * will add a new node by randomly selecting from all possible moves
 */
 Connect4Node* Connect4Node::Expand()
 {
-
+	
 	if (isEndState || availableMoves.size() == 0)
 		return NULL; // if this is game end state, we cannot expand
 	else
@@ -250,14 +251,17 @@ void Connect4Node::CalcResult(BOARD_SQUARE_STATE winner)
 
 	if (winner == BOARD_SQUARE_STATE::CROSS)
 	{
+		std::cout << "W";
 		Backpropagate(1);
 	}
 	else if (winner == BOARD_SQUARE_STATE::CIRCLE)
 	{
+		std::cout << "L";
 		Backpropagate(-1);
 	}
 	else
 	{
+		std::cout << "D";
 		Backpropagate(0);
 	}
 }
@@ -283,6 +287,8 @@ void Connect4Node::Backpropagate(int result)
 
 }
 
+
+
 /*
 * FindHighestRankingChild will determine which of this node's children has the highest metric
 */
@@ -298,6 +304,8 @@ Connect4Node* Connect4Node::FindHighestRankingChild(bool report)
 
 	for (int i = 0; i < branches.size(); i++)
 	{
+
+
 		float nodeWinRate = branches[i]->getRanking() / branches[i]->visits;
 		float newUCB = nodeWinRate + (1.5 * sqrt(log(visits) / branches[i]->visits));
 

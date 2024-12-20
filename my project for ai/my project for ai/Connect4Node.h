@@ -32,6 +32,8 @@ public:
 	void Simulate(BOARD_SQUARE_STATE playerTurn);
 	void Backpropagate(int reward);
 
+	int getX();
+
 	// tree functions
 	Connect4Node* FindHighestRankingChild(bool report);
 	void resetNode();

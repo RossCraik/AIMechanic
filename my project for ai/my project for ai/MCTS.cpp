@@ -6,6 +6,7 @@
 using namespace std;
 
 const int MAX_RUNS = 5000;
+bool first = true;
 
 bool validatePosition(int x, GameState gameState)
 {
@@ -53,6 +54,7 @@ int main()
         // define a cmount
         int runCount = 0;
 
+        Connect4Node* aiBlock = NULL;
 
         // Apply the MCTS algorithm to determine the AI's move
         // - will run for maximum of MAX_RUNS iterations
@@ -61,6 +63,13 @@ int main()
             // Select - choose a node that will be expanded
             Connect4Node* selectedNode = rootNode->Select();
 
+            if (mainGameState.checkForPlayerWin(selectedNode->getGameState().gameAction.x, selectedNode->getGameState().gameAction.y))
+            {
+                aiBlock = selectedNode;
+            }
+
+            
+            
             // Expand - expand the tree from this node
             Connect4Node* expandedNode = selectedNode->Expand();
 
@@ -71,24 +80,36 @@ int main()
                 //  - then back propagate the result to the root node
                 expandedNode->Simulate(aiMarker);
             }
+            
+
+
+            
 
             runCount++;
 
         } while (runCount < MAX_RUNS);
 
+        GameAction bestAction;
 
-
-        // perform the action - find child node with highest ranking
-        Connect4Node* highestChild = rootNode->FindHighestRankingChild(true);
-        GameAction bestAction = highestChild->getGameState().gameAction;
-
-        //if (mainGameState.checkForPlayerWin() == BOARD_SQUARE_STATE::NONE) {
+        if (aiBlock != NULL)
+        {
+            bestAction = aiBlock->getGameState().gameAction;
             bestAction.playerMove = aiMarker;
-        //}
-        //else
-        //{
-        //    bestAction.playerMove = mainGameState.checkForPlayerWin();
-        //}
+        }
+        else if (first)
+        {
+            bestAction = GameAction(3, 5, aiMarker);
+        }
+        else
+        {
+            // perform the action - find child node with highest ranking
+            Connect4Node* highestChild = rootNode->FindHighestRankingChild(true);
+            bestAction = highestChild->getGameState().gameAction;
+            bestAction.playerMove = aiMarker;
+        }
+
+        
+
         
         
         std::cout << "The AI selected move is " << bestAction.x << " " << bestAction.y << std::endl;
@@ -170,7 +191,7 @@ int main()
 
         // reset the root node ready for next turn
         rootNode->resetNode();
-
+        first = false;
 
 
 

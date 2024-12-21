@@ -20,6 +20,7 @@ void GameState::setAndApplyAction(GameAction newAction)
 
 }
 
+
 /**
 * setAndApplyAction will return all possible moves from the stored board state
 */
@@ -202,6 +203,30 @@ bool GameState::checkForPlayerWin(int x, int y)
 	{
 		return true;
 	}
+
+	if (
+		x < 5 &&
+		gameBoard.board[x - 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 2][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+
+		)
+	{
+		return true;
+	}
+
+	if (
+		x > 1 &&
+		gameBoard.board[x - 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 2][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 1][y] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+
+		)
+	{
+		return true;
+	}
 	
 	if (
 		x > 2 &&
@@ -265,6 +290,28 @@ bool GameState::checkForPlayerWin(int x, int y)
 	}
 
 
+	if (
+		x < 5 && y < 4 &&
+		gameBoard.board[x - 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+		)
+	{
+		return true;
+	}
+
+	if (
+		x > 1 && y > 1 &&
+		gameBoard.board[x + 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 2][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+		)
+	{
+		return true;
+	}
+
 	//checking second diagonal
 
 	if (
@@ -283,6 +330,28 @@ bool GameState::checkForPlayerWin(int x, int y)
 		gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x - 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x - 3][y + 3] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+		)
+	{
+		return true;
+	}
+
+	if (
+		x < 5 && y > 1 &&
+		gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 2][y - 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
+		)
+	{
+		return true;
+	}
+
+	if (
+		x > 1 && y < 4 &&
+		gameBoard.board[x - 1][y + 1] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x - 2][y + 2] == BOARD_SQUARE_STATE::CIRCLE &&
+		gameBoard.board[x + 1][y - 1] == BOARD_SQUARE_STATE::CIRCLE &&
 		gameBoard.board[x][y + 1] != BOARD_SQUARE_STATE::NONE
 		)
 	{

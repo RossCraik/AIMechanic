@@ -90,8 +90,10 @@ int main()
         } while (runCount < MAX_RUNS);
 
         GameAction bestAction;
+        GameState copy = mainGameState;
+        copy.setAndApplyAction(rootNode->FindHighestRankingChild(true)->getGameState().gameAction);
 
-        if (aiBlock != NULL)
+        if (aiBlock != NULL && !copy.checkWin())
         {
             bestAction = aiBlock->getGameState().gameAction;
             bestAction.playerMove = aiMarker;

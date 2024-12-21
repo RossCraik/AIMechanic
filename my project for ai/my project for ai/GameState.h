@@ -20,7 +20,6 @@ public:
 
 	bool checkForPlayerWin(int x, int y);
 
-	bool checkGivePlayerWin(int x, int y);
 
 };
 

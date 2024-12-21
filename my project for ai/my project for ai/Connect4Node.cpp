@@ -97,18 +97,14 @@ void Connect4Node::generatePossibleMoves()
 */
 Connect4Node* Connect4Node::Select()
 {
-	
 	// if there are no child nodes, we expand this node
 	if (branches.size() == 0 || availableMoves.size() > 0) {
 
 
 		return this;
 	}
-	
 	else
 	{
-		
-
 		int randomNum = rand() % 10;
 		if (randomNum < 2) {
 			int randomBranch = rand() % branches.size();
@@ -119,9 +115,6 @@ Connect4Node* Connect4Node::Select()
 			Connect4Node* highest = FindHighestRankingChild(false);
 			return highest->Select();
 		}
-
-
-
 	}
 }
 
@@ -211,11 +204,6 @@ void Connect4Node::Simulate(BOARD_SQUARE_STATE startingTurn)
 			// pick a random move and apply it to the simulation state
 			int randomMove = rand() % possibleMoves.size();
 
-			if (copyOfGameState.checkForPlayerWin(possibleMoves[randomMove].first, possibleMoves[randomMove].second))
-			{
-
-			}
-
 
 			GameAction newAction(possibleMoves[randomMove].first, possibleMoves[randomMove].second, playerTurn);
 			copyOfGameState.setAndApplyAction(newAction);
@@ -251,17 +239,17 @@ void Connect4Node::CalcResult(BOARD_SQUARE_STATE winner)
 
 	if (winner == BOARD_SQUARE_STATE::CROSS)
 	{
-		std::cout << "W";
+		//std::cout << "W";
 		Backpropagate(1);
 	}
 	else if (winner == BOARD_SQUARE_STATE::CIRCLE)
 	{
-		std::cout << "L";
+		//std::cout << "L";
 		Backpropagate(-1);
 	}
 	else
 	{
-		std::cout << "D";
+		//std::cout << "D";
 		Backpropagate(0);
 	}
 }
@@ -297,15 +285,14 @@ Connect4Node* Connect4Node::FindHighestRankingChild(bool report)
 {
 
 	if (branches.size() == 0)
+	{
 		return NULL;
+	}
 
 	float maxRanking = 0;
 	int maxIndex = 0;
-
 	for (int i = 0; i < branches.size(); i++)
 	{
-
-
 		float nodeWinRate = branches[i]->getRanking() / branches[i]->visits;
 		float newUCB = nodeWinRate + (1.5 * sqrt(log(visits) / branches[i]->visits));
 
